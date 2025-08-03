@@ -9,40 +9,42 @@
 
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
-      window.OneSignalDeferred = window.OneSignalDeferred || []
+      setTimeout(() => {
+        window.OneSignalDeferred = window.OneSignalDeferred || []
 
-      OneSignalDeferred.push(async function (OneSignal) {
-        await OneSignal.init({
-          appId: 'd4639504-aedc-4887-a938-1cb725b2950d',
-          safari_web_id: 'web.onesignal.auto.39e347a3-7290-467c-af89-3542a6fc2365',
-          notifyButton: {
-            enable: false,
-          },
-          allowLocalhostAsSecureOrigin: true,
-          welcomeNotification: {
-            disabled: true,
-          },
-          promptOptions: {
-            siteName: 'Vitesse Lite',
-            actionMessage: "We'd like to show you notifications for the latest updates.",
-            acceptButtonText: 'Allow',
-            cancelButtonText: 'No Thanks',
-          },
-          autoResubscribe: true,
-          allowLocalhostAsSecureOrigin: true,
-          serviceWorkerParam: { scope: '/vite-app/' },
-          serviceWorkerPath: 'vite-app/OneSignalSDKWorker.js',
+        OneSignalDeferred.push(async function (OneSignal) {
+          await OneSignal.init({
+            appId: 'd4639504-aedc-4887-a938-1cb725b2950d',
+            safari_web_id: 'web.onesignal.auto.39e347a3-7290-467c-af89-3542a6fc2365',
+            notifyButton: {
+              enable: false,
+            },
+            allowLocalhostAsSecureOrigin: true,
+            welcomeNotification: {
+              disabled: true,
+            },
+            promptOptions: {
+              siteName: 'Vitesse Lite',
+              actionMessage: "We'd like to show you notifications for the latest updates.",
+              acceptButtonText: 'Allow',
+              cancelButtonText: 'No Thanks',
+            },
+            autoResubscribe: true,
+            allowLocalhostAsSecureOrigin: true,
+            serviceWorkerParam: { scope: '/vite-app/' },
+            serviceWorkerPath: 'vite-app/OneSignalSDKWorker.js',
+          })
+
+          OneSignal.Notifications.setDefaultUrl(location.href)
+          if (!OneSignal.Notifications.permission && !OneSignal.User.PushSubscription.optedIn) {
+            console.log('通知未启用，显示自定义提示')
+            OneSignal.Slidedown.promptPush()
+          }
+          console.log('OneSignal.User.PushSubscription.token', OneSignal.User.PushSubscription.token)
+
+          if (OneSignal.User.PushSubscription.token) await OneSignal.login('aa-1')
         })
-
-        OneSignal.Notifications.setDefaultUrl(location.href)
-        if (!OneSignal.Notifications.permission && !OneSignal.User.PushSubscription.optedIn) {
-          console.log('通知未启用，显示自定义提示')
-          OneSignal.Slidedown.promptPush()
-        }
-        console.log('OneSignal.User.PushSubscription.token', OneSignal.User.PushSubscription.toke)
-
-        if (OneSignal.User.PushSubscription.token) await OneSignal.login('aa-1')
-      })
+      }, 10000)
     </script>
     <script type="module" crossorigin src="/vite-app/assets/index-DpmcD63B.js"></script>
     <link rel="stylesheet" crossorigin href="/vite-app/assets/index-CHGN32w3.css">
@@ -57,6 +59,6 @@
         if (setting === 'dark' || (prefersDark && setting !== 'light'))
           document.documentElement.classList.toggle('dark', true)
       })()
-    </script>
+    </script>
   </body>
 </html>
