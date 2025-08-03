@@ -9,9 +9,17 @@ import VueMacros from 'unplugin-vue-macros/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
+import mkcert from 'vite-plugin-mkcert'
+import { VitePWA } from 'vite-plugin-pwa'
+
+
+// const isDev = import.meta.env
+
+// console.log(import.meta)
+// console.log(`Vite is running in ${isDev ? 'development' : 'production'} mode`)
 
 export default defineConfig({
-  base: '/vite-app',
+  base: '/vite-app/',
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -60,6 +68,45 @@ export default defineConfig({
     // https://github.com/antfu/unocss
     // see uno.config.ts for config
     UnoCSS(),
+
+    mkcert(),
+
+    // https://github.com/antfu/vite-plugin-pwa
+    VitePWA({
+      devOptions: {
+        enabled: true,
+      },
+      // strategies: 'injectManifest',
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
+      manifest: {
+        name: 'Vitesse',
+        short_name: 'Vitesse',
+        theme_color: '#ffffff',
+        icons: [
+          {
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
+      },
+      // workbox: {
+      //   importScripts: ['/push/OneSignalSDKWorker.js'],
+      //   globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+      // }
+    }),
   ],
 
   // https://github.com/vitest-dev/vitest

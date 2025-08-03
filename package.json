@@ -4,7 +4,7 @@
   "packageManager": "pnpm@10.12.1",
   "scripts": {
     "build": "vite build",
-    "dev": "vite --port 3333 --open",
+    "dev": "vite --mode dev --port 80",
     "lint": "eslint .",
     "typecheck": "vue-tsc",
     "preview": "vite preview",
@@ -38,6 +38,8 @@
     "unplugin-vue-macros": "catalog:build",
     "unplugin-vue-router": "catalog:build",
     "vite": "catalog:build",
+    "vite-plugin-mkcert": "^1.17.8",
+    "vite-plugin-pwa": "^1.0.2",
     "vitest": "catalog:dev",
     "vue-tsc": "catalog:dev"
   },
