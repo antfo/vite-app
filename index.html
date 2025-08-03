@@ -34,7 +34,7 @@
           serviceWorkerPath: 'vite-app/OneSignalSDKWorker.js',
         })
 
-        OneSignal.Notifications.setDefaultUrl(locaation.href)
+        OneSignal.Notifications.setDefaultUrl(location.href)
         if (!OneSignal.Notifications.permission && !OneSignal.User.PushSubscription.optedIn) {
           console.log('通知未启用，显示自定义提示')
           OneSignal.Slidedown.promptPush()
