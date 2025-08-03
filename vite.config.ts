@@ -102,7 +102,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        importScripts: ['/OneSignalSDKWorker.js'],
+        importScripts: ['/vite-app/OneSignalSDKWorker.js'],
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         clientsClaim: true,
         skipWaiting: true,
