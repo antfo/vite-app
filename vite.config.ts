@@ -101,10 +101,12 @@ export default defineConfig({
           },
         ],
       },
-      // workbox: {
-      //   importScripts: ['/push/OneSignalSDKWorker.js'],
-      //   globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-      // }
+      workbox: {
+        importScripts: ['/OneSignalSDKWorker.js'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        clientsClaim: true,
+        skipWaiting: true,
+      },
     }),
   ],
 
