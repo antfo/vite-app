@@ -12,7 +12,6 @@ import { defineConfig } from 'vite'
 import mkcert from 'vite-plugin-mkcert'
 import { VitePWA } from 'vite-plugin-pwa'
 
-
 // const isDev = import.meta.env
 
 // console.log(import.meta)

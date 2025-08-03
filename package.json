@@ -6,6 +6,7 @@
     "build": "vite build",
     "dev": "vite --mode dev --port 80",
     "lint": "eslint .",
+    "fix": "eslint . --fix",
     "typecheck": "vue-tsc",
     "preview": "vite preview",
     "test": "vitest",
@@ -38,8 +39,8 @@
     "unplugin-vue-macros": "catalog:build",
     "unplugin-vue-router": "catalog:build",
     "vite": "catalog:build",
-    "vite-plugin-mkcert": "^1.17.8",
-    "vite-plugin-pwa": "^1.0.2",
+    "vite-plugin-mkcert": "catalog:",
+    "vite-plugin-pwa": "catalog:",
     "vitest": "catalog:dev",
     "vue-tsc": "catalog:dev"
   },

@@ -1,4 +1,7 @@
 packages: []
+catalog:
+  vite-plugin-mkcert: ^1.17.8
+  vite-plugin-pwa: ^1.0.2
 catalogs:
   build:
     '@iconify-json/carbon': ^1.2.9
